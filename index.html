@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cutive+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+    <title>CSS Grid</title>
+</head>
+<body>
+    <header>
+        <h1>CSS Grid Examples</h1>
+    </header>
+    <div class="toc">
+        <h3>Table Of Contents</h3>
+        <ul>
+            <li><a href="rows.html">Rows</a></li>
+            <li><a href="columns.html">Columns</a></li>
+            <li><a href="spans.html">Spans</a></li>
+        </ul>
+    </div>
+
+<!-- START HERE -->
+<div class="grid">
+    <div class="item">Item 1</div>
+    <div class="item">Item 2</div>
+    <div class="item">Item 3</div>
+</div>
+<div class="container">
+    <p>CSS grid layouts are defined by adding the following CSS ruleset:</p>
+    <div class="markdown">
+        <p>
+            display: grid;
+        </p>
+    </div>
+    <p>Unlike flexbox, the grid rows and columns need to be defined with an additional rule.  In the below example, each grid box is defined by a specific width</p>
+    <div class="markdown">
+        <pre>
+            .grid {
+                display: grid;
+                grid-template-columns: 200px 200px 200px;
+            }
+        </pre>
+    </div>
+    <p>the result will look like this:</p>
+    <img src="img/grid200px2.png" alt="">
+    <p>additional grid items will be forced into place (3 columns of 200px each): </p>
+    <img src="img/grid200px3.png" alt="">
+    <p>We can also define a column width of 'auto', which will allow the column to fill any available remaining space in the viewport:</p>
+    <div class="markdown">
+        <pre>
+            .grid {
+                display: grid;
+                grid-template-columns: 200px auto 200px;
+            }
+        </pre>
+    </div>
+    <img src="img/gridauto.png" alt="">
+    <p>In order to have the grid items fill the viewport evenly, we could do something like this:</p>
+    <div class="markdown">
+        <pre>
+            .grid {
+                display: grid;
+                grid-template-columns: auto auto auto;
+            }
+        </pre>
+    </div>
+    <p>However, there is a better way.  The <span class="markdown">repeat()</span> function takes in two parameters - the number of times to repeat, and the width to repeat:</p>
+    <div class="markdown">
+        <pre>
+            .grid {
+                display: grid;
+                grid-template-columns: repeat(3,auto);
+            }
+        </pre>
+    </div>
+    <img src="img/gridauto2.png" alt="">
+    <p>The width parameter can be in almost any format (pixels, em, rem, percentage, etc) - however, the most common format is 'fr' , which will define a set number of 'frames' out of the available viewport width.  We can also use 'grid-gap' to define the space between each item:</p>
+    <div class="markdown">
+        <pre>
+            .grid {
+                display: grid;
+                grid-template-columns: 2fr 1fr 2fr;
+                grid-gap: 10px;
+            }
+        </pre>
+    </div>
+    <img src="img/gridfrgap.png" alt="">
+</body>
+</html>
